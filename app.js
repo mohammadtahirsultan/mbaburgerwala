@@ -12,6 +12,17 @@ import cors from "cors";
 import contactRoute from './routes/contact.js'
 config({ path: "./config.env" });
 
+
+// using Middlewares
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://mbaburgerwalaa.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+  })
+); 
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -37,14 +48,7 @@ app.enable("trust proxy");
 app.use(cookieParser());
 ConnectPassport();
 
-// using Middlewares
-app.use(
-  cors({
-    credentials: true,
-    origin: "https://mbaburgerwalaa.netlify.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-  })
-);
+
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", orderRoutes);
 app.use("/api/v1", contactRoute);
