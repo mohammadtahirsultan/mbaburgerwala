@@ -41,7 +41,7 @@ ConnectPassport();
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000"],
+    origin: "https://mbaburgerwalaa.netlify.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
