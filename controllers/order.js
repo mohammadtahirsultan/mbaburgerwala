@@ -3,6 +3,8 @@ import ErrorHandler from "../middlewares/ErrorHandler.js";
 import Order from "../models/order.js";
 import Payment from "../models/Payment.js";
 import { instance } from "../server.js";
+
+
 export const placeOrder = async (req, res, next) => {
   try {
     const {
@@ -16,7 +18,7 @@ export const placeOrder = async (req, res, next) => {
       total,
     } = req.body;
 
-    const user = req.user._id;
+    const user = "req.user._id";
 
     const orderOptions = {
       shippingInfo,
@@ -54,7 +56,7 @@ export const placeOrderOnline = async (req, res, next) => {
       total,
     } = req.body;
 
-    const user = req.user._id;
+    const user =" req.user._id";
 
     const orderOptions = {
       shippingInfo,
@@ -133,11 +135,12 @@ export const myOrders = async (req, res, next) => {
     const orders = await Order.find({
       user: req.user._id,
     }).populate("user", "name");
-
+  
     res.status(200).json({
       success: true,
       orders,
     });
+  
   } catch (error) {
     return next(new ErrorHandler(error, 500));
   }

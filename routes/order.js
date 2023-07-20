@@ -4,12 +4,12 @@ import { myOrders, placeOrder,placeOrderOnline,orderDetails, adminOrders, proces
 
 const router = express.Router();
 
-
-router.post("/createorder",isAuthenticated, placeOrder);
-router.post("/createorderonline",isAuthenticated, placeOrderOnline);
+// router.get("/admin/users", isAuthenticated,authorizeAdmin,adminUsers);
+router.post("/createorder",  placeOrder);
+router.post("/createorderonline",  placeOrderOnline);
 router.post("/paymentverification",isAuthenticated, paymentVerification);
-router.get("/myorders",isAuthenticated, myOrders);
-router.get("/order/:id",isAuthenticated, orderDetails);
+router.get("/myorders", myOrders);
+router.get("/order/:id", orderDetails);
 
 // Add Admin Middleware 
 router.get("/admin/orders",isAuthenticated ,authorizeAdmin, adminOrders);

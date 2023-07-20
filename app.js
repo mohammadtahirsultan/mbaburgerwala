@@ -9,6 +9,7 @@ import passport from "passport";
 import cookieParser from "cookie-parser";
 import { errorMiddleware } from "./middlewares/errorMiddleware.js";
 import cors from "cors";
+import contactRoute from './routes/contact.js'
 config({ path: "./config.env" });
 
 app.use(express.json());
@@ -39,13 +40,14 @@ ConnectPassport();
 // using Middlewares
 app.use(
   cors({
-    credential: true,
-    origin: process.env.FRONT_END_URL,
+    credentials: true,
+    origin: ["http://localhost:3000"],
     methods: ["GET", "POST", "PUT", "DELETE"],
   })
 );
 app.use("/api/v1", userRoutes);
 app.use("/api/v1", orderRoutes);
+app.use("/api/v1", contactRoute);
 
 app.use(errorMiddleware);
 

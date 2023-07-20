@@ -1,10 +1,12 @@
 import ErrorHandler from "../middlewares/ErrorHandler.js";
 import Order from "../models/order.js";
 import User from "../models/user.js";
+
 export const myProfile = (req, res) => {
   res.status(200).send({
     sucess: true,
     user: req.user,
+    message: "Login Successfully",
   });
 };
 
@@ -13,9 +15,9 @@ export const logout = (req, res, next) => {
     if (err) return next(err);
 
     res.clearCookie("connect.sid", {
-      secure: process.env.NODE_ENV === "DEVELOPMENT" ? false : true,
-      httpOnly: process.env.NODE_ENV === "DEVELOPMENT" ? false : true,
-      sameSite: process.env.NODE_ENV === "DEVELOPMENT" ? false : "none",
+      secure: process.env.NODE_ENV === "development" ? false : true,
+      httpOnly: process.env.NODE_ENV === "development" ? false : true,
+      sameSite: process.env.NODE_ENV === "development" ? false : "none",
     });
     res.status(200).send({
       message: "Logout Successfully",

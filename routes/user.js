@@ -13,11 +13,15 @@ router.get(
 );
 
 router.get("/login", passport.authenticate("google"), (req, res) => {
-  successRedirect:process.env.FRONT_END_URL
+   res.redirect(process.env.FRONT_END_URL)
+   
+  // res.send("Logged In Successfully")
 });
 
 router.get("/me", isAuthenticated,myProfile);
 router.get("/logout", logout);
+
+
 
 
 router.get("/admin/users", isAuthenticated,authorizeAdmin,adminUsers);

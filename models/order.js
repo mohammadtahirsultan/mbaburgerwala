@@ -4,65 +4,65 @@ const orderSchema = new mongoose.Schema({
   shippingInfo: {
     hNo: {
       type: String,
-      require: true,
+      required: true,
     },
     state: {
       type: String,
-      require: true,
+      required: true,
     },
     city: {
       type: String,
-      require: true,
+      required: true,
     },
     country: {
       type: String,
-      require: true,
+      required: true,
     },
     pinCode: {
       type: Number,
-      require: true,
+      required: true,
     },
     phoneNo: {
       type: Number,
-      require: true,
+      required: true,
     },
   },
   orderItems: {
     cheeseBurger: {
       price: {
         type: Number,
-        require: true,
+        required: true,
       },
       quantity: {
         type: Number,
-        require: true,
+        required: true,
       },
     },
     vegCheeseBurger: {
       price: {
         type: Number,
-        require: true,
+        required: true,
       },
       quantity: {
         type: Number,
-        require: true,
+        required: true,
       },
     },
     burgerWithFries: {
       price: {
         type: Number,
-        require: true,
+        required: true,
       },
       quantity: {
         type: Number,
-        require: true,
+        required: true,
       },
     },
   },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
-    require: true,
+    required: true,
   },
   paymentMethod: {
     type: String,
